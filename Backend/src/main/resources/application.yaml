@@ -1,3 +1,54 @@
 spring:
   application:
     name: pos_system
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/pos_system
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: Hetp@tel9126
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${GMAIL_USERNAME}
+    password:  ${GMAIL_APP_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  devtools:
+    livereload:
+      enabled: true
+
+server:
+  port: 5000
+
+razorpay:
+  api:
+    key: ${RAZORPAY_KEY}
+    secret: ${RAZORPAY_SECRET}
+
+
+
+
+app:
+  frontend:
+    reset-url: http://localhost:5173/auth/reset-password?token=
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql: TRACE
