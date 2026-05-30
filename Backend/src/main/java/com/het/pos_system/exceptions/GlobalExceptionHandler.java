@@ -11,10 +11,10 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestControllerAdvice
+//@RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(RuntimeException.class)
+//    @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<?> handleRuntimeException(
             RuntimeException ex,
             HttpServletRequest request

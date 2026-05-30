@@ -5,6 +5,7 @@ import com.het.pos_system.entity.User;
 import com.het.pos_system.repository.UserRepository;
 import com.het.pos_system.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -29,12 +30,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getCurrentUser() {
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        User user = userRepository.findByEmail(email);
-        if (user != null) {
-            return user;
+
+        Authentication authentication =
+                SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication == null || !authentication.isAuthenticated()) {
+            throw new RuntimeException("User is not authenticated");
         }
-        return null;
+
+        String email = authentication.getName();
+
+        return userRepository.findByEmail(email);
     }
 
     @Override

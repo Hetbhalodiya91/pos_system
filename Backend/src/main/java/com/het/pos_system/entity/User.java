@@ -27,9 +27,9 @@ public class User {
     @Column(nullable = false)
     private String phoneNumber;
 
-//    @ManyToOne
-//    @JoinColumn(name = "store_id")
-//    private Store store;
+    @ManyToOne
+    @JoinColumn(name = "store_id")
+    private Store store;
 //
 //    @ManyToOne
 //    private Branch branch;

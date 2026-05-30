@@ -3,6 +3,9 @@ package com.het.pos_system.mapper;
 import com.het.pos_system.entity.User;
 import com.het.pos_system.payload.dto.UserDto;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class UserMapper {
 
     public static UserDto toDto(User user) {
@@ -18,4 +21,9 @@ public class UserMapper {
                 .build();
     }
 
+    public static List<UserDto> toDTOList(List<User> users) {
+        return users.stream()
+                .map(UserMapper::toDto)
+                .collect(Collectors.toList());
+    }
 }
